@@ -1,5 +1,5 @@
 import { Component, Prop } from '@stencil/core';
-import { MatchResults } from '@stencil/router';
+import { MatchResults, RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-profile',
@@ -8,6 +8,7 @@ import { MatchResults } from '@stencil/router';
 })
 export class AppProfile {
   @Prop() match: MatchResults;
+  @Prop() history: RouterHistory;
 
   normalize(name: string): string {
     if (name) {
@@ -17,15 +18,26 @@ export class AppProfile {
   }
 
   render() {
-    if (this.match && this.match.params.name) {
-      return (
-        <div class="app-profile">
+
+    const moreUrl = `${this.history.location.pathname}/more`;
+    return (
+      <div class="app-profile">
+        <h2>Profile</h2>
+        {this.match && this.match.params.name ? (
           <p>
             Hello! My name is {this.normalize(this.match.params.name)}. My name was passed in
             through a route param!
+            <stencil-route-link url={moreUrl}>More Info</stencil-route-link>
           </p>
-        </div>
-      );
-    }
+        ) : null}
+        <app-profile-form history={this.history}></app-profile-form>
+        <stencil-route url={moreUrl} routeRender={() => (
+          <div>
+            <h4>More Info about {this.normalize(this.match.params.name)}</h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, dolore. Sit tempora atque dolorem quis! Sed deleniti aut odit, iste earum enim reiciendis libero amet pariatur adipisci maiores, alias laudantium.</p>
+          </div>
+        )}></stencil-route>
+      </div>
+    );
   }
 }

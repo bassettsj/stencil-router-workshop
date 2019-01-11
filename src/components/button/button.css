@@ -1,8 +1,4 @@
-.app-home {
-  padding: 10px;
-}
-
-.btn {
+::slotted(*) {
   background: #5851ff;
   color: white;
   margin: 8px;
@@ -20,9 +16,3 @@
   display: inline-block;
   text-decoration: none;
 }
-
-button:hover {
-  box-shadow: 0 3px 6px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.1);
-  transform: translateY(1px);
-}
-

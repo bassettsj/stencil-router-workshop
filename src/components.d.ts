@@ -11,6 +11,7 @@ import '@stencil/router';
 import '@stencil/state-tunnel';
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 
 
@@ -20,27 +21,43 @@ export namespace Components {
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
   interface AppProfile {
+    'history': RouterHistory;
     'match': MatchResults;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
     'match'?: MatchResults;
+  }
+
+  interface AppProfileForm {
+    'history': RouterHistory;
+  }
+  interface AppProfileFormAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
   }
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface AppBtn {}
+  interface AppBtnAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
+    'AppProfileForm': Components.AppProfileForm;
     'AppRoot': Components.AppRoot;
+    'AppBtn': Components.AppBtn;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
+    'app-profile-form': Components.AppProfileFormAttributes;
     'app-root': Components.AppRootAttributes;
+    'app-btn': Components.AppBtnAttributes;
   }
 
 
@@ -56,22 +73,38 @@ declare global {
     new (): HTMLAppProfileElement;
   };
 
+  interface HTMLAppProfileFormElement extends Components.AppProfileForm, HTMLStencilElement {}
+  var HTMLAppProfileFormElement: {
+    prototype: HTMLAppProfileFormElement;
+    new (): HTMLAppProfileFormElement;
+  };
+
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLAppBtnElement extends Components.AppBtn, HTMLStencilElement {}
+  var HTMLAppBtnElement: {
+    prototype: HTMLAppBtnElement;
+    new (): HTMLAppBtnElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
+    'app-profile-form': HTMLAppProfileFormElement
     'app-root': HTMLAppRootElement
+    'app-btn': HTMLAppBtnElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
+    'app-profile-form': HTMLAppProfileFormElement;
     'app-root': HTMLAppRootElement;
+    'app-btn': HTMLAppBtnElement;
   }
 
 
