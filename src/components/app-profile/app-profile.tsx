@@ -37,6 +37,7 @@ export class AppProfile {
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus, dolore. Sit tempora atque dolorem quis! Sed deleniti aut odit, iste earum enim reiciendis libero amet pariatur adipisci maiores, alias laudantium.</p>
           </div>
         )}></stencil-route>
+        <stencil-router-redirect url="/" />
       </div>
     );
   }

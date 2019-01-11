@@ -16,7 +16,7 @@ const PrivateRoute = ({ component, ...props}) => {
       if (auth.isAuthenticated) {
         return <Component {...props} {...props.componentProps} />;
       }
-      return <stencil-router-redirect url='/' />
+      return <stencil-router-redirect url='/login' />
     }}/>
   );
 }
